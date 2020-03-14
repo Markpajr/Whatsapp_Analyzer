@@ -6,24 +6,26 @@ Then it uses OCR packages to pull the call data from the screenshots, allowing f
 import pyautogui as pyag
 import os,time
 import pygetwindow as gw
-from pynput.keyboard import Key, Controller
+
 
 def open_dex():
+    # Finds and restores the Samsung Dex Window
     samsung_dex = gw.getWindowsWithTitle('Samsung DeX')[0]
     samsung_dex.maximize()
     samsung_dex.restore()
 
 
 def take_screenshot(img_name):
-    call_screenshots = r'C:\Users\Owner\Documents\Programming\Python\Projects\Kayes Gift\Whatsapp_Analyzer\Call_Screenshots'
-    pyag.screenshot(os.path.join(call_screenshots,img_name))
+    #Saves a screenshot to indicated path
+    screenshots_path = r'C:\Users\Owner\Documents\Programming\Python\Projects\Kayes Gift\Whatsapp_Analyzer\Call_Screenshots'
+    pyag.screenshot(os.path.join(screenshots_path,img_name))
 
-    
+
 if __name__ == "__main__":
     open_dex()
-    keyboard = Controller()
     pyag.press('down',interval=1)
     for i in range(3):
+        # Uses autohotkey to initiate Enter and Escape commands, issues with pyautogui sending these keys
         pyag.hotkey('ctrl', 'j')
         pyag.press('ctrl')
         time.sleep(2)
