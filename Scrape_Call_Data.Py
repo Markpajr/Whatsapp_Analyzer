@@ -23,8 +23,9 @@ def take_screenshot(img_name):
 
 if __name__ == "__main__":
     open_dex()
-    pyag.press('down',interval=1)
-    for i in range(3):
+    pyag.press('down', interval=1)
+    #Guestimated number of calls in call log, and adjusted as necessary to get screenshots of every call
+    for i in range(725):
         # Uses autohotkey to initiate Enter and Escape commands, issues with pyautogui sending these keys
         pyag.hotkey('ctrl', 'j')
         pyag.press('ctrl')
